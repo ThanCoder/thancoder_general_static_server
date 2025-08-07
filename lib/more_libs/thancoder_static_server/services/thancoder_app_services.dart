@@ -7,6 +7,25 @@ class ThancoderAppServices {
     return ServerFileServices.getMainDBPath('app');
   }
 
+  static Future<AppRelease?> getNewVersion() async {
+    // await Future.delayed(Duration(seconds: 2));
+
+    final current = ThancoderServer.instance.currentPlatform;
+    final list = await getOnlineList();
+    final index = list.indexWhere((e) => e.packageName == current.packageName);
+    if (index == -1) return null;
+    final currentApp = list[index];
+    final releaseList = await AppReleaseServices.getOnlineList(currentApp.id);
+    if (releaseList.isEmpty) return null;
+    //sort
+    releaseList.sortVersion();
+    // to newest version
+    if (current.version.compareTo(releaseList.first.version) == -1) {
+      return releaseList.first;
+    }
+    return null;
+  }
+
   // online
   static Future<List<ThancoderApp>> getOnlineList() async {
     try {
@@ -19,7 +38,7 @@ class ThancoderAppServices {
         e.toString(),
         tag: 'ThancoderAppServices:getOnlineList',
       );
-    return [];
+      return [];
     }
   }
 

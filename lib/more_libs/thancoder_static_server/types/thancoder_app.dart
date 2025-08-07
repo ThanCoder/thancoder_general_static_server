@@ -11,6 +11,7 @@ class ThancoderApp {
   String desc;
   String coverUrl;
   String githubUrl;
+  String packageName;
   DateTime date;
   ThancoderApp({
     required this.id,
@@ -18,6 +19,7 @@ class ThancoderApp {
     required this.desc,
     required this.coverUrl,
     required this.githubUrl,
+    required this.packageName,
     required this.date,
   });
   factory ThancoderApp.create({
@@ -25,6 +27,7 @@ class ThancoderApp {
     String desc = '',
     String coverUrl = '',
     String githubUrl = '',
+    String packageName= '',
   }) {
     final id = Uuid().v4();
     return ThancoderApp(
@@ -33,6 +36,7 @@ class ThancoderApp {
       desc: desc,
       coverUrl: ServerFileServices.getServerFilesUrl('$id.png'),
       githubUrl: githubUrl,
+      packageName: packageName,
       date: DateTime.now(),
     );
   }
@@ -44,6 +48,7 @@ class ThancoderApp {
       'desc': desc,
       'coverUrl': coverUrl,
       'githubUrl': githubUrl,
+      "packageName": packageName,
       'date': date.millisecondsSinceEpoch,
     };
   }
@@ -54,6 +59,7 @@ class ThancoderApp {
       title: map['title'] as String,
       desc: map['desc'] as String,
       coverUrl: map['coverUrl'] as String,
+      packageName: MapServices.getString(map, ['packageName']),
       githubUrl: MapServices.getString(map, ['githubUrl']),
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
     );

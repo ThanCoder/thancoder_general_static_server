@@ -25,6 +25,9 @@ class _ThancoderHomeScreenState extends State<ThancoderHomeScreen> {
       appBar: AppBar(title: Text('ThanCoder Static Server')),
       body: CustomScrollView(
         slivers: [
+          // current platform
+          SliverToBoxAdapter(child: _getCurrentPlatform()),
+          // list
           SliverToBoxAdapter(
             child: FutureBuilder(
               future: ThancoderAppServices.getOnlineList(),
@@ -46,6 +49,49 @@ class _ThancoderHomeScreenState extends State<ThancoderHomeScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _getCurrentPlatform() {
+    final current = ThancoderServer.instance.currentPlatform;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('ယခု Version'),
+            Text('PackageName: ${current.packageName}'),
+            Text('Version: ${current.version}'),
+            Text('Platform: ${current.type.name}'),
+            Divider(),
+            _getNewVersion(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _getNewVersion() {
+    return FutureBuilder(
+      future: ThancoderAppServices.getNewVersion(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text('Version စစ်ဆေးနေပါတယ်....');
+        }
+        if (snapshot.hasData && snapshot.data != null) {
+          final data = snapshot.data;
+          return Column(
+            children: [
+              Text('Version အသစ်'),
+              Text('Version: ${data?.version}'),
+              Text('Platform: ${data?.type.name}'),
+              IconButton.filled(onPressed: () {}, icon: Icon(Icons.download)),
+            ],
+          );
+        }
+        return Text('Version အသစ်မရှိသေးပါ');
+      },
     );
   }
 

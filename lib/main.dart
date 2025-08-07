@@ -42,6 +42,10 @@ void main() async {
       maxLines: 4,
       collapseOnTextTap: true,
     ),
+    currentPlatform: PlatformApp.create(
+      packageName: 'novel_v3',
+      version: '1.5.2',
+    ),
     getRootServerDirPath: () => rootPath,
     getRootServerDirUrl: () =>
         'https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server',

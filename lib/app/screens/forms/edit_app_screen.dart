@@ -17,7 +17,9 @@ class _EditAppScreenState extends State<EditAppScreen> {
   final descController = TextEditingController();
   final coverUrlController = TextEditingController();
   final githubUrlController = TextEditingController();
+  final packageNameController = TextEditingController();
   late ThancoderApp app;
+
   @override
   void initState() {
     app = widget.app;
@@ -30,6 +32,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
     descController.text = app.desc;
     coverUrlController.text = app.coverUrl;
     githubUrlController.text = app.githubUrl;
+    packageNameController.text = app.packageName;
   }
 
   @override
@@ -65,6 +68,12 @@ class _EditAppScreenState extends State<EditAppScreen> {
               TTextField(
                 label: Text('Title'),
                 controller: titleController,
+                maxLines: 1,
+                isSelectedAll: true,
+              ),
+              TTextField(
+                label: Text('Package Name'),
+                controller: packageNameController,
                 maxLines: 1,
                 isSelectedAll: true,
               ),
@@ -111,6 +120,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
     app.desc = descController.text;
     app.coverUrl = coverUrlController.text;
     app.githubUrl = githubUrlController.text;
+    app.packageName = packageNameController.text;
 
     Navigator.pop(context);
 

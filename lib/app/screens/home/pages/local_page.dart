@@ -4,6 +4,7 @@ import 'package:t_widgets/functions/index.dart';
 import 'package:t_widgets/widgets/t_loader_random.dart';
 import 'package:thancoder_general_static_server/app/providers/app_provider.dart';
 import 'package:thancoder_general_static_server/app/route_helper.dart';
+import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_app_notifier_button.dart';
 import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_server.dart';
 
 class LocalPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _LocalPageState extends State<LocalPage> {
     final isAppLoading = appProvider.isLoading;
     final appList = appProvider.getList;
     return Scaffold(
-      appBar: AppBar(title: Text('Local Page')),
+      appBar: AppBar(title: Text('Local Page'),actions: [ThancoderAppNotifierButton()],),
       body: isAppLoading
           ? Center(child: TLoaderRandom())
           : CustomScrollView(

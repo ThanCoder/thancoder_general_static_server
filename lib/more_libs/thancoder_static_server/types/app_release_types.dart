@@ -1,3 +1,5 @@
+import 'dart:io';
+
 enum AppReleaseTypes {
   android,
   linux,
@@ -15,6 +17,21 @@ enum AppReleaseTypes {
       return web;
     }
     if (name == window.name) {
+      return window;
+    }
+
+    return AppReleaseTypes.android;
+  }
+
+  static AppReleaseTypes get getTypeFromCurrent {
+    if (Platform.isAndroid) {
+      return android;
+    }
+    if (Platform.isLinux) {
+      return linux;
+    }
+
+    if (Platform.isWindows) {
       return window;
     }
 

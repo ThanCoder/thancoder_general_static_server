@@ -5,6 +5,7 @@
   "desc": "",
   "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/f357105f-76ea-4bf7-a155-86f0b74f8f18.png",
   "githubUrl": "https://github.com/ThanCoder/cm_app",
+  "packageName": "cm_app",
   "date": 1754545064426
  },
  {
@@ -13,6 +14,7 @@
   "desc": "",
   "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
   "githubUrl": "https://github.com/ThanCoder/novelv3",
+  "packageName": "novel_v3",
   "date": 1754538825933
  }
 ]
