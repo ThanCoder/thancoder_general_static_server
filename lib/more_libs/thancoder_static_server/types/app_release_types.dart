@@ -1,10 +1,10 @@
-enum ThancoderAppTypes {
+enum AppReleaseTypes {
   android,
   linux,
   window,
   web;
 
-  static ThancoderAppTypes getTypeFromName(String name) {
+  static AppReleaseTypes getTypeFromName(String name) {
     if (name == android.name) {
       return android;
     }
@@ -18,6 +18,6 @@ enum ThancoderAppTypes {
       return window;
     }
 
-    return ThancoderAppTypes.android;
+    return AppReleaseTypes.android;
   }
 }

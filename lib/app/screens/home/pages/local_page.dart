@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:t_widgets/functions/index.dart';
+import 'package:t_widgets/widgets/t_loader_random.dart';
+import 'package:thancoder_general_static_server/app/providers/app_provider.dart';
 import 'package:thancoder_general_static_server/app/route_helper.dart';
+import 'package:thancoder_general_static_server/app/views/app_see_all_view.dart';
 import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_server.dart';
-import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/types/thancoder_app.dart';
-import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/types/thancoder_app_types.dart';
 
 class LocalPage extends StatefulWidget {
   const LocalPage({super.key});
@@ -14,48 +16,101 @@ class LocalPage extends StatefulWidget {
 
 class _LocalPageState extends State<LocalPage> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => init());
+  }
+
+  Future<void> init() async {
+    await context.read<AppProvider>().initList();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final appProvider = context.watch<AppProvider>();
+    final isAppLoading = appProvider.isLoading;
+    final appList = appProvider.getList;
     return Scaffold(
       appBar: AppBar(title: Text('Local Page')),
+      body: isAppLoading
+          ? Center(child: TLoaderRandom())
+          : CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: AppSeeAllView(
+                    list: appList,
+                    onSeeAllClicked: (title, list) {},
+                    onClicked: _goEditAppContentScreen,
+                    onRightClicked: _showItemContextMenu,
+                  ),
+                ),
+              ],
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showCreatorMenu,
+
         child: Icon(Icons.add),
       ),
     );
   }
 
   void _showCreatorMenu() {
-    showTModalBottomSheet(
+    showTMenuBottomSheet(
       context,
-      child: Column(
-        children: [
-          ListTile(
-            leading: Icon(Icons.add),
-            title: Text('New App'),
-            onTap: () {
-              Navigator.pop(context);
-              _createNewApp();
-            },
-          ),
-        ],
-      ),
+      children: [
+        ListTile(
+          leading: Icon(Icons.add),
+          title: Text('New App'),
+          onTap: () {
+            Navigator.pop(context);
+            _goEditScreen();
+          },
+        ),
+      ],
     );
   }
 
-  // new app
-  void _createNewApp() {
-    showTReanmeDialog(
+  void _goEditScreen() async {
+    final app = ThancoderApp.create();
+    goEditAppScreen(
       context,
-      text: 'Untitled',
-      barrierDismissible: false,
-      title: Text('New App'),
-      submitText: 'New',
-      onSubmit: (text) {
-        final app = ThancoderApp.create(
-          type: ThancoderAppTypes.android,
-          title: text,
-        );
-        goEditAppScreen(context, app, onUpdated: (updatedApp) {});
+      app,
+      onUpdated: (updatedApp) {
+        context.read<AppProvider>().add(app);
+      },
+    );
+  }
+
+  void _goEditAppContentScreen(ThancoderApp app) {
+    goEditAppContentScreen(context, app);
+  }
+
+  void _showItemContextMenu(ThancoderApp app) {
+    showTMenuBottomSheet(
+      context,
+      children: [
+        Text(app.title),
+        Divider(),
+        ListTile(
+          iconColor: Colors.red,
+          leading: Icon(Icons.delete_forever_rounded),
+          title: Text('Delete'),
+          onTap: () {
+            Navigator.pop(context);
+            _deleteConfirm(app);
+          },
+        ),
+      ],
+    );
+  }
+
+  void _deleteConfirm(ThancoderApp app) {
+    showTConfirmDialog(
+      context,
+      contentText: 'ဖျက်ချင်တာ သေချာပြီလား?',
+      submitText: 'Delete Forever',
+      onSubmit: () {
+        context.read<AppProvider>().delete(app);
       },
     );
   }

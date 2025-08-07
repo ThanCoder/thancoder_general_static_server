@@ -1,37 +1,37 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import 'package:uuid/uuid.dart';
 
-import 'thancoder_app_types.dart';
+import '../thancoder_server.dart';
 
 class ThancoderApp {
   String id;
   String title;
   String desc;
   String coverUrl;
-  ThancoderAppTypes type;
+  String coverPath;
   DateTime date;
   ThancoderApp({
     required this.id,
     required this.title,
     required this.desc,
     required this.coverUrl,
-    required this.type,
+    this.coverPath = '',
     required this.date,
   });
   factory ThancoderApp.create({
-    required ThancoderAppTypes type,
     String title = 'Untitled',
     String desc = '',
     String coverUrl = '',
+    String coverPath = '',
   }) {
+    final id = Uuid().v4();
     return ThancoderApp(
-      id: Uuid().v4(),
+      id: id,
       title: title,
       desc: desc,
-      coverUrl: '',
-      type: type,
+      coverUrl: ServerFileServices.getServerFilesUrl('$id.png'),
+      coverPath: ServerFileServices.getFilesPath('$id.png'),
       date: DateTime.now(),
     );
   }
@@ -41,20 +41,19 @@ class ThancoderApp {
       'id': id,
       'title': title,
       'desc': desc,
-      'type': type.name,
       'coverUrl': coverUrl,
+      'coverPath': coverPath,
       'date': date.millisecondsSinceEpoch,
     };
   }
 
   factory ThancoderApp.fromMap(Map<String, dynamic> map) {
-    String type = map['type'] ?? '';
     return ThancoderApp(
       id: map['id'] as String,
       title: map['title'] as String,
       desc: map['desc'] as String,
-      type: ThancoderAppTypes.getTypeFromName(type),
       coverUrl: map['coverUrl'] as String,
+      coverPath: map['coverPath'] as String,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
     );
   }
@@ -63,4 +62,16 @@ class ThancoderApp {
 
   factory ThancoderApp.fromJson(String source) =>
       ThancoderApp.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  String get getCoverPath {
+    return ServerFileServices.getFilesPath('$id.png');
+  }
+
+  String get getServerCoverUrl {
+    return ServerFileServices.getServerFilesUrl('$id.png');
+  }
+
+  Future<void> deleteAll() async {
+    await AppRelease.deleteAll(id);
+  }
 }

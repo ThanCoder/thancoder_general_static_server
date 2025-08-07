@@ -1,3 +1,3 @@
 export 'thancoder_app.dart';
-export 'thancoder_app_release.dart';
-export 'thancoder_app_types.dart';
+export 'app_release.dart';
+export 'app_release_types.dart';

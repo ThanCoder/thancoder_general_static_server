@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_widgets/choosers/t_cover_chooser.dart';
 import 'package:t_widgets/widgets/index.dart';
 import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/types/thancoder_app.dart';
 
@@ -13,6 +14,8 @@ class EditAppScreen extends StatefulWidget {
 
 class _EditAppScreenState extends State<EditAppScreen> {
   final titleController = TextEditingController();
+  final descController = TextEditingController();
+  final coverUrlController = TextEditingController();
   late ThancoderApp app;
   @override
   void initState() {
@@ -23,6 +26,8 @@ class _EditAppScreenState extends State<EditAppScreen> {
 
   void init() {
     titleController.text = app.title;
+    descController.text = app.desc;
+    coverUrlController.text = app.coverUrl;
   }
 
   @override
@@ -31,16 +36,54 @@ class _EditAppScreenState extends State<EditAppScreen> {
       appBar: AppBar(title: Text('Edit: ${widget.app.title}')),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          spacing: 15,
-          children: [
-            TTextField(
-              label: Text('Title'),
-              controller: titleController,
-              maxLines: 1,
-              isSelectedAll: true,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 15,
+            children: [
+              // cover
+              Row(
+                spacing: 8,
+                children: [
+                  Column(
+                    children: [
+                      TCoverChooser(coverPath: app.coverPath),
+                      Text('Local Image'),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      TImageUrl(url: app.coverUrl, size: 150),
+                      Text('Online Image'),
+                    ],
+                  ),
+                ],
+              ),
+
+              TTextField(
+                label: Text('Title'),
+                controller: titleController,
+                maxLines: 1,
+                isSelectedAll: true,
+              ),
+              TTextField(
+                label: Text('Cover Url'),
+                controller: coverUrlController,
+                maxLines: 1,
+                isSelectedAll: true,
+                onChanged: (value) {
+                  app.coverUrl = value;
+                  setState(() {});
+                },
+              ),
+              TTextField(
+                label: Text('Desc'),
+                controller: descController,
+                maxLines: null,
+                isSelectedAll: true,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -50,7 +93,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
     );
   }
 
-  void _onSave(){
+  void _onSave() {
     app.title = titleController.text;
 
     Navigator.pop(context);

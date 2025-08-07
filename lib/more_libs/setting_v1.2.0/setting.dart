@@ -8,6 +8,8 @@ export 'index.dart';
 
 class Setting {
   static AppConfigModel get getAppConfig => appConfigNotifier.value;
+  static ValueNotifier<AppConfigModel> get getAppConfigNotifier =>
+      appConfigNotifier;
 
   static String getForwardProxyUrl(String url) {
     if (appConfigNotifier.value.isUseProxyServer) {
