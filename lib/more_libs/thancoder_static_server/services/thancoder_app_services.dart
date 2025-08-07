@@ -8,7 +8,7 @@ class ThancoderAppServices {
   }
 
   static Future<AppRelease?> getNewVersion() async {
-    // await Future.delayed(Duration(seconds: 2));
+    // await Future.delayed(Duration(seconds: 4));
 
     final current = ThancoderServer.instance.currentPlatform;
     final list = await getOnlineList();
@@ -16,12 +16,16 @@ class ThancoderAppServices {
     if (index == -1) return null;
     final currentApp = list[index];
     final releaseList = await AppReleaseServices.getOnlineList(currentApp.id);
-    if (releaseList.isEmpty) return null;
+     // filtering platform
+    final releasePlatformList = releaseList.where((e)=> e.type == current.type).toList();
+    // empty
+    if (releasePlatformList.isEmpty) return null;
     //sort
-    releaseList.sortVersion();
+    releasePlatformList.sortVersion();
     // to newest version
-    if (current.version.compareTo(releaseList.first.version) == -1) {
-      return releaseList.first;
+    // check version
+    if (current.version.compareTo(releasePlatformList.first.version) == -1) {
+      return releasePlatformList.first;
     }
     return null;
   }

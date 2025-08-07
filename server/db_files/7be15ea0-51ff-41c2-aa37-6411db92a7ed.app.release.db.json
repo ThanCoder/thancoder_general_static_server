@@ -1,0 +1,28 @@
+[
+ {
+  "id": "740d40d2-e3a8-4de2-85e1-fe632b6b4d6f",
+  "appId": "7be15ea0-51ff-41c2-aa37-6411db92a7ed",
+  "title": "Personal Server App Initial Release",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/7be15ea0-51ff-41c2-aa37-6411db92a7ed.png",
+  "downloadUrl": "https://github.com/ThanCoder/personal_server_app/releases/download/v1.0.0/personal_server.linux.v1.0.0.zip",
+  "isDirectLink": true,
+  "size": "17.8 MB",
+  "version": "1.0.0",
+  "type": "linux",
+  "date": 1754558273527
+ },
+ {
+  "id": "5eb59883-52a6-4729-afa3-32fa2ba236bc",
+  "appId": "7be15ea0-51ff-41c2-aa37-6411db92a7ed",
+  "title": "Personal Server App Initial Release",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/7be15ea0-51ff-41c2-aa37-6411db92a7ed.png",
+  "downloadUrl": "https://github.com/ThanCoder/personal_server_app/releases/download/v1.0.0/personal_server.v1.0.0.apk",
+  "isDirectLink": true,
+  "size": "45 MB",
+  "version": "1.0.0",
+  "type": "android",
+  "date": 1754558223719
+ }
+]

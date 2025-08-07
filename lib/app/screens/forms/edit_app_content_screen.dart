@@ -35,30 +35,62 @@ class _EditAppContentScreenState extends State<EditAppContentScreen> {
       appBar: AppBar(title: Text('Edit App Content')),
       body: isLoading
           ? Center(child: TLoaderRandom())
-          : CustomScrollView(
-              slivers: [
-                // header
-                SliverToBoxAdapter(
-                  child: TImageFile(path: widget.app.getCoverPath, size: 150),
-                ),
-                SliverToBoxAdapter(child: Text(widget.app.desc)),
-                SliverToBoxAdapter(child: Divider()),
-
-                // list
-                SliverList.builder(
-                  itemCount: list.length,
-                  itemBuilder: (context, index) => AppReleaseListItem(
-                    release: list[index],
-                    onEditClicked: _goEdit,
-                    onRightClicked: _showItemContextMenu,
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomScrollView(
+                slivers: [
+                  // header
+                  SliverToBoxAdapter(child: _getCoverHeader()),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: _getDescWidget(),
+                    ),
                   ),
-                ),
-              ],
+                  SliverToBoxAdapter(child: Divider()),
+
+                  // list
+                  SliverList.builder(
+                    itemCount: list.length,
+                    itemBuilder: (context, index) => AppReleaseListItem(
+                      release: list[index],
+                      onEditClicked: _goEdit,
+                      onRightClicked: _showItemContextMenu,
+                    ),
+                  ),
+                ],
+              ),
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: _createMenu,
         child: Icon(Icons.add),
       ),
+    );
+  }
+
+  Widget _getDescWidget() {
+    if (widget.app.desc.isEmpty) {
+      return SizedBox.shrink();
+    }
+    if (ThancoderServer.instance.getExpandableTextWidget != null) {
+      return ThancoderServer.instance.getExpandableTextWidget!(widget.app.desc);
+    }
+    return Text(widget.app.desc);
+  }
+
+  Widget _getCoverHeader() {
+    return FutureBuilder(
+      future: AppReleaseServices.getCoverList(widget.app.id),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final list = snapshot.data ?? [];
+          if (list.isNotEmpty) {
+            return CoverView(list: list);
+          }
+        }
+        // not found
+        return TImageFile(path: widget.app.getCoverPath, size: 150);
+      },
     );
   }
 

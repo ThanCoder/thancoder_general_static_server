@@ -38,6 +38,16 @@ class _AppReleaseScreenState extends State<AppReleaseScreen> {
 
           return CustomScrollView(
             slivers: [
+              // header
+              SliverToBoxAdapter(child: _getCoverHeader()),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: _getDescWidget(),
+                ),
+              ),
+              SliverToBoxAdapter(child: Divider()),
+
               SliverList.builder(
                 itemCount: list.length,
                 itemBuilder: (context, index) => AppReleaseListItem(
@@ -50,6 +60,32 @@ class _AppReleaseScreenState extends State<AppReleaseScreen> {
         },
       ),
     );
+  }
+
+  Widget _getCoverHeader() {
+    return FutureBuilder(
+      future: AppReleaseServices.getOnlineCoverList(widget.app.id),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final list = snapshot.data ?? [];
+          if (list.isNotEmpty) {
+            return CoverView(list: list);
+          }
+        }
+        // not found
+        return TImageFile(path: widget.app.getCoverPath, size: 150);
+      },
+    );
+  }
+
+  Widget _getDescWidget() {
+    if (widget.app.desc.isEmpty) {
+      return SizedBox.shrink();
+    }
+    if (ThancoderServer.instance.getExpandableTextWidget != null) {
+      return ThancoderServer.instance.getExpandableTextWidget!(widget.app.desc);
+    }
+    return Text(widget.app.desc);
   }
 
   void _onDownload(AppRelease release) {

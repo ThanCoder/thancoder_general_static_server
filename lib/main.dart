@@ -44,7 +44,7 @@ void main() async {
     ),
     currentPlatform: PlatformApp.create(
       packageName: 'novel_v3',
-      version: '1.5.2',
+      version: '2.0.0',
     ),
     getRootServerDirPath: () => rootPath,
     getRootServerDirUrl: () =>

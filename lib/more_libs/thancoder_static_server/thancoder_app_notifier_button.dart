@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:t_widgets/widgets/index.dart';
 
-import 'screens/thancoder_home_screen.dart';
+import 'thancoder_server.dart';
 
 class ThancoderAppNotifierButton extends StatefulWidget {
   const ThancoderAppNotifierButton({super.key});
@@ -12,7 +13,8 @@ class ThancoderAppNotifierButton extends StatefulWidget {
 
 class _ThancoderAppNotifierButtonState
     extends State<ThancoderAppNotifierButton> {
-  bool isNewUpdate = true;
+  bool isNewUpdate = false;
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -20,10 +22,28 @@ class _ThancoderAppNotifierButtonState
     WidgetsBinding.instance.addPostFrameCallback((_) => init());
   }
 
-  void init() async {}
+  void init() async {
+    try {
+      final release = await ThancoderAppServices.getNewVersion();
+
+      if (!mounted) return;
+      isNewUpdate = release == null ? false : true;
+      isLoading = false;
+
+      setState(() {});
+    } catch (e) {
+      ThancoderServer.showDebugLog(
+        e.toString(),
+        tag: 'ThancoderAppNotifierButton:init',
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return TLoader(size: 20);
+    }
     return IconButton(
       onPressed: () {
         Navigator.push(
@@ -37,9 +57,10 @@ class _ThancoderAppNotifierButtonState
 
   Widget _getBadge() {
     if (isNewUpdate) {
-      return Badge.count(count: 1, child: Icon(
-        color: Colors.amber,
-        Icons.notifications_active));
+      return Badge.count(
+        count: 1,
+        child: Icon(color: Colors.amber, Icons.notifications_active),
+      );
     }
     return Icon(Icons.notifications_active);
   }

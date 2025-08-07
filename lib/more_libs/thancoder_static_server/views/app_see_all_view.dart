@@ -23,7 +23,7 @@ class AppSeeAllView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TSeeAllView<ThancoderApp>(
-        title: 'App',
+        title: 'Release App',
         list: list,
         showCount: 4,
         onSeeAllClicked: onSeeAllClicked,
