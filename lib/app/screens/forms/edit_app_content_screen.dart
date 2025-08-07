@@ -39,7 +39,7 @@ class _EditAppContentScreenState extends State<EditAppContentScreen> {
               slivers: [
                 // header
                 SliverToBoxAdapter(
-                  child: TImageFile(path: widget.app.coverPath, size: 150),
+                  child: TImageFile(path: widget.app.getCoverPath, size: 150),
                 ),
                 SliverToBoxAdapter(child: Text(widget.app.desc)),
                 SliverToBoxAdapter(child: Divider()),
@@ -49,7 +49,7 @@ class _EditAppContentScreenState extends State<EditAppContentScreen> {
                   itemCount: list.length,
                   itemBuilder: (context, index) => AppReleaseListItem(
                     release: list[index],
-                    onClicked: _goEdit,
+                    onEditClicked: _goEdit,
                     onRightClicked: _showItemContextMenu,
                   ),
                 ),
@@ -116,6 +116,14 @@ class _EditAppContentScreenState extends State<EditAppContentScreen> {
         Text(release.title),
         Divider(),
         ListTile(
+          leading: Icon(Icons.add),
+          title: Text('ReNew'),
+          onTap: () {
+            Navigator.pop(context);
+            _goRenewAndEdit(release);
+          },
+        ),
+        ListTile(
           iconColor: Colors.red,
           leading: Icon(Icons.delete_forever),
           title: Text('Delete'),
@@ -138,5 +146,21 @@ class _EditAppContentScreenState extends State<EditAppContentScreen> {
         context.read<AppReleaseProvider>().delete(release);
       },
     );
+  }
+
+  void _goRenewAndEdit(AppRelease release) async {
+    final newRelease = AppRelease.create(
+      title: release.title,
+      appId: widget.app.id,
+      coverUrl: release.coverUrl,
+      isDirectLink: release.isDirectLink,
+      desc: release.desc,
+      type: release.type,
+      version: release.version,
+    );
+    await context.read<AppReleaseProvider>().add(newRelease);
+
+    if (!mounted) return;
+    _goEdit(newRelease);
   }
 }

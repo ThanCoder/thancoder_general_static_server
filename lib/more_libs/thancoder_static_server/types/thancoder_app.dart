@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'package:than_pkg/than_pkg.dart';
 import 'package:uuid/uuid.dart';
 
 import '../thancoder_server.dart';
@@ -9,21 +10,21 @@ class ThancoderApp {
   String title;
   String desc;
   String coverUrl;
-  String coverPath;
+  String githubUrl;
   DateTime date;
   ThancoderApp({
     required this.id,
     required this.title,
     required this.desc,
     required this.coverUrl,
-    this.coverPath = '',
+    required this.githubUrl,
     required this.date,
   });
   factory ThancoderApp.create({
     String title = 'Untitled',
     String desc = '',
     String coverUrl = '',
-    String coverPath = '',
+    String githubUrl = '',
   }) {
     final id = Uuid().v4();
     return ThancoderApp(
@@ -31,7 +32,7 @@ class ThancoderApp {
       title: title,
       desc: desc,
       coverUrl: ServerFileServices.getServerFilesUrl('$id.png'),
-      coverPath: ServerFileServices.getFilesPath('$id.png'),
+      githubUrl: githubUrl,
       date: DateTime.now(),
     );
   }
@@ -42,7 +43,7 @@ class ThancoderApp {
       'title': title,
       'desc': desc,
       'coverUrl': coverUrl,
-      'coverPath': coverPath,
+      'githubUrl': githubUrl,
       'date': date.millisecondsSinceEpoch,
     };
   }
@@ -53,7 +54,7 @@ class ThancoderApp {
       title: map['title'] as String,
       desc: map['desc'] as String,
       coverUrl: map['coverUrl'] as String,
-      coverPath: map['coverPath'] as String,
+      githubUrl: MapServices.getString(map, ['githubUrl']),
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
     );
   }

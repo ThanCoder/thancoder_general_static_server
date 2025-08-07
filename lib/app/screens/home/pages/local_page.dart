@@ -4,7 +4,6 @@ import 'package:t_widgets/functions/index.dart';
 import 'package:t_widgets/widgets/t_loader_random.dart';
 import 'package:thancoder_general_static_server/app/providers/app_provider.dart';
 import 'package:thancoder_general_static_server/app/route_helper.dart';
-import 'package:thancoder_general_static_server/app/views/app_see_all_view.dart';
 import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_server.dart';
 
 class LocalPage extends StatefulWidget {
@@ -38,6 +37,7 @@ class _LocalPageState extends State<LocalPage> {
               slivers: [
                 SliverToBoxAdapter(
                   child: AppSeeAllView(
+                    isLocal: true,
                     list: appList,
                     onSeeAllClicked: (title, list) {},
                     onClicked: _goEditAppContentScreen,
@@ -92,6 +92,14 @@ class _LocalPageState extends State<LocalPage> {
         Text(app.title),
         Divider(),
         ListTile(
+          leading: Icon(Icons.edit_document),
+          title: Text('Edit'),
+          onTap: () {
+            Navigator.pop(context);
+            _goItemEditAppScreen(app);
+          },
+        ),
+        ListTile(
           iconColor: Colors.red,
           leading: Icon(Icons.delete_forever_rounded),
           title: Text('Delete'),
@@ -101,6 +109,17 @@ class _LocalPageState extends State<LocalPage> {
           },
         ),
       ],
+    );
+  }
+
+  // item
+  void _goItemEditAppScreen(ThancoderApp app) {
+    goEditAppScreen(
+      context,
+      app,
+      onUpdated: (updatedApp) {
+        context.read<AppProvider>().update(app);
+      },
     );
   }
 

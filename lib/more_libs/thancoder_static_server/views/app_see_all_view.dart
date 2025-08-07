@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:t_widgets/t_widgets.dart';
-import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_server.dart';
+
+import '../thancoder_server.dart';
 
 class AppSeeAllView extends StatelessWidget {
   List<ThancoderApp> list;
   void Function(String title, List<ThancoderApp> list) onSeeAllClicked;
   void Function(ThancoderApp app) onClicked;
   void Function(ThancoderApp app)? onRightClicked;
+  bool isLocal;
   AppSeeAllView({
     super.key,
+    this.isLocal=false,
     required this.list,
     required this.onSeeAllClicked,
     required this.onClicked,
@@ -25,7 +28,7 @@ class AppSeeAllView extends StatelessWidget {
         showCount: 4,
         onSeeAllClicked: onSeeAllClicked,
         gridItemBuilder: (context, item) => AppGridItem(
-          isLocal: true,
+          isLocal: isLocal,
           app: item,
           onClicked: onClicked,
           onRightClicked: onRightClicked,

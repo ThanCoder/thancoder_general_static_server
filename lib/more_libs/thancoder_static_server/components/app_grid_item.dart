@@ -33,7 +33,7 @@ class AppGridItem extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-              child: TImage(source: isLocal ? app.coverPath : app.coverUrl),
+              child: TImage(source: isLocal ? app.getCoverPath : app.coverUrl),
             ),
             Container(
               decoration: BoxDecoration(

@@ -8,34 +8,43 @@ export 'types/index.dart';
 export 'services/index.dart';
 export 'components/index.dart';
 export 'extensions/index.dart';
+export 'views/index.dart';
 
 class ThancoderServer {
   static final ThancoderServer instance = ThancoderServer._();
   ThancoderServer._();
   factory ThancoderServer() => instance;
 
+  static bool isShowDebugLog = true;
+
   late String Function() getRootServerDirPath;
   late String Function() getRootServerDirUrl;
-  static bool isShowDebugLog = true;
+  Widget Function(String text)? getExpandableTextWidget;
   late bool isPrettyDBJson;
   void Function(BuildContext context, String message)? _showMessage;
+  late Future<String> Function(String url) getContentFromUrl;
 
   Future<void> init({
     required String Function() getRootServerDirPath,
     required String Function() getRootServerDirUrl,
+    required Future<String> Function(String url) getContentFromUrl,
     void Function(BuildContext context, String message)? showMessage,
+    Widget Function(String text)? getExpandableTextWidget,
     bool isShowDebugLog = true,
     bool isPrettyDBJson = true,
   }) async {
     this.getRootServerDirPath = getRootServerDirPath;
     this.getRootServerDirUrl = getRootServerDirUrl;
+    this.getContentFromUrl = getContentFromUrl;
     isShowDebugLog = isShowDebugLog;
     this.isPrettyDBJson = isPrettyDBJson;
     _showMessage = showMessage;
+    this.getExpandableTextWidget = getExpandableTextWidget;
     // init path
     await ServerFileServices.createDir('${getRootServerDirPath()}/files');
     await ServerFileServices.createDir('${getRootServerDirPath()}/db_files');
   }
+
 
   void showMessage(BuildContext context, String message) {
     if (_showMessage == null) return;

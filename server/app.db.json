@@ -1,10 +1,18 @@
 [
  {
+  "id": "f357105f-76ea-4bf7-a155-86f0b74f8f18",
+  "title": "CM App",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/f357105f-76ea-4bf7-a155-86f0b74f8f18.png",
+  "githubUrl": "https://github.com/ThanCoder/cm_app",
+  "date": 1754545064426
+ },
+ {
   "id": "321c3044-21a8-45fc-a6b9-1a97d5e946ba",
   "title": "Novel V3",
   "desc": "",
   "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
-  "coverPath": "/home/than/projects/static_servers/thancoder_general_static_server/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
+  "githubUrl": "https://github.com/ThanCoder/novelv3",
   "date": 1754538825933
  }
 ]

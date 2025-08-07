@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:t_widgets/t_widgets.dart';
@@ -31,6 +32,16 @@ void main() async {
     // showMessage: (context, message) {
     //   showTSnackBar(context, message);
     // },
+    getContentFromUrl: (url) async {
+      final res = await Dio().get(url);
+      return res.data.toString();
+    },
+    getExpandableTextWidget: (text) => ExpandableText(
+      text,
+      expandText: 'More',
+      maxLines: 4,
+      collapseOnTextTap: true,
+    ),
     getRootServerDirPath: () => rootPath,
     getRootServerDirUrl: () =>
         'https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server',

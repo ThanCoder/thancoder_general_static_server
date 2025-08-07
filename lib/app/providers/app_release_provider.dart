@@ -35,8 +35,8 @@ class AppReleaseProvider extends ChangeNotifier {
 
   Future<void> update(AppRelease release) async {
     try {
-      isLoading = true;
-      notifyListeners();
+      // isLoading = true;
+      // notifyListeners();
       final foundIndex = _list.indexWhere((e) => e.id == release.id);
       if (foundIndex == -1) {
         throw Exception('index not found: [$foundIndex]!');
@@ -56,8 +56,8 @@ class AppReleaseProvider extends ChangeNotifier {
 
   Future<void> delete(AppRelease release) async {
     try {
-      isLoading = true;
-      notifyListeners();
+      // isLoading = true;
+      // notifyListeners();
       final foundIndex = _list.indexWhere((e) => e.id == release.id);
       if (foundIndex == -1) {
         throw Exception('index not found: [$foundIndex]!');

@@ -16,6 +16,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
   final titleController = TextEditingController();
   final descController = TextEditingController();
   final coverUrlController = TextEditingController();
+  final githubUrlController = TextEditingController();
   late ThancoderApp app;
   @override
   void initState() {
@@ -28,6 +29,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
     titleController.text = app.title;
     descController.text = app.desc;
     coverUrlController.text = app.coverUrl;
+    githubUrlController.text = app.githubUrl;
   }
 
   @override
@@ -47,7 +49,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
                 children: [
                   Column(
                     children: [
-                      TCoverChooser(coverPath: app.coverPath),
+                      TCoverChooser(coverPath: app.getCoverPath),
                       Text('Local Image'),
                     ],
                   ),
@@ -67,6 +69,16 @@ class _EditAppScreenState extends State<EditAppScreen> {
                 isSelectedAll: true,
               ),
               TTextField(
+                label: Text('Github Url'),
+                controller: githubUrlController,
+                maxLines: 1,
+                isSelectedAll: true,
+                onChanged: (value) {
+                  app.githubUrl = value;
+                  setState(() {});
+                },
+              ),
+              TTextField(
                 label: Text('Cover Url'),
                 controller: coverUrlController,
                 maxLines: 1,
@@ -76,6 +88,7 @@ class _EditAppScreenState extends State<EditAppScreen> {
                   setState(() {});
                 },
               ),
+              
               TTextField(
                 label: Text('Desc'),
                 controller: descController,
@@ -95,6 +108,9 @@ class _EditAppScreenState extends State<EditAppScreen> {
 
   void _onSave() {
     app.title = titleController.text;
+    app.desc = descController.text;
+    app.coverUrl = coverUrlController.text;
+    app.githubUrl = githubUrlController.text;
 
     Navigator.pop(context);
 

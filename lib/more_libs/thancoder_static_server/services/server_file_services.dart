@@ -22,6 +22,9 @@ class ServerFileServices {
   static String getServerMainUrl(String path) {
     return '${ThancoderServer.instance.getRootServerDirUrl()}/$path';
   }
+  static String getServerMainDBUrl(String name) {
+    return getServerMainUrl('$name.db.json');
+  }
 
   static String getServerFilesUrl(String name) {
     return '${getServerMainUrl('files')}/$name';
