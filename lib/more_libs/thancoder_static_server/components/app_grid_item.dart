@@ -38,18 +38,27 @@ class AppGridItem extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: Colors.black.withValues(alpha: 0.3),
+                borderRadius: BorderRadius.circular(4)
               ),
             ),
             Positioned(
               left: 0,
               right: 0,
               bottom: 0,
-              child: Text(
-                app.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 12),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(4),
+                    bottomRight: Radius.circular(4),
+                  )
+                ),
+                child: Text(
+                  app.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
               ),
             ),
           ],

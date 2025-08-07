@@ -14,6 +14,9 @@ class AppReleaseProvider extends ChangeNotifier {
     final res = await AppReleaseServices.getList(appId);
     _list.addAll(res);
 
+     // sort
+    _list.sortVersion();
+
     isLoading = false;
     notifyListeners();
   }
@@ -44,6 +47,8 @@ class AppReleaseProvider extends ChangeNotifier {
       _list[foundIndex] = release;
 
       await AppReleaseServices.setList(release.appId,_list);
+
+      _list.sortVersion();
 
       isLoading = false;
       notifyListeners();

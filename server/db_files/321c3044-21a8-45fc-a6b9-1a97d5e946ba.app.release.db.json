@@ -1,5 +1,44 @@
 [
  {
+  "id": "41e30522-236a-444d-9122-ad1be6245236",
+  "appId": "321c3044-21a8-45fc-a6b9-1a97d5e946ba",
+  "title": "Novel V3",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
+  "downloadUrl": "https://github.com/ThanCoder/novelv3/releases/download/v2.5.2/Novle-V3-V2.5.2.apk",
+  "isDirectLink": true,
+  "size": "39.7 MB",
+  "version": "2.5.2",
+  "type": "android",
+  "date": 1754588856196
+ },
+ {
+  "id": "b910f5dd-1601-45c9-8b0d-230f8dd23b39",
+  "appId": "321c3044-21a8-45fc-a6b9-1a97d5e946ba",
+  "title": "Novel V3",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
+  "downloadUrl": "https://github.com/ThanCoder/novelv3/releases/download/v2.5.1/Novel-V3-V2.5.1.linux.zip",
+  "isDirectLink": true,
+  "size": "25.6 MB",
+  "version": "2.5.1",
+  "type": "linux",
+  "date": 1754588825954
+ },
+ {
+  "id": "e37e5c1d-e238-469e-9084-e87497c084a2",
+  "appId": "321c3044-21a8-45fc-a6b9-1a97d5e946ba",
+  "title": "Novel V3",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
+  "downloadUrl": "https://github.com/ThanCoder/novelv3/releases/download/v2.5.1/Novle-V3-V2.5.1.apk",
+  "isDirectLink": true,
+  "size": "39.7 MB",
+  "version": "2.5.1",
+  "type": "android",
+  "date": 1754588649578
+ },
+ {
   "id": "368ca1d7-5960-48be-9152-d7611fc4cd65",
   "appId": "321c3044-21a8-45fc-a6b9-1a97d5e946ba",
   "title": "Novel V3",

@@ -113,11 +113,14 @@ class _EditAppContentScreenState extends State<EditAppContentScreen> {
   }
 
   void _createNewRelease() async {
+    final list = context.read<AppReleaseProvider>().getList;
+
     final release = AppRelease.create(
       title: widget.app.title,
       appId: widget.app.id,
       coverUrl: widget.app.coverUrl,
       isDirectLink: false,
+      version: list.isEmpty ? '' : list.first.version,
       type: AppReleaseTypes.android,
     );
     await context.read<AppReleaseProvider>().add(release);

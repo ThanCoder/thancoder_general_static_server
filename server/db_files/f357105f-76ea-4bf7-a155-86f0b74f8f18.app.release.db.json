@@ -1,5 +1,31 @@
 [
  {
+  "id": "8842e9ed-8157-475d-9932-7a8b59de707e",
+  "appId": "f357105f-76ea-4bf7-a155-86f0b74f8f18",
+  "title": "CM App",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/f357105f-76ea-4bf7-a155-86f0b74f8f18.png",
+  "downloadUrl": "https://github.com/ThanCoder/cm_app/releases/download/v1.2.5/CM.App.V1.2.5.linux.zip",
+  "isDirectLink": true,
+  "size": "17.9 MB",
+  "version": "1.2.5",
+  "type": "linux",
+  "date": 1754589523310
+ },
+ {
+  "id": "d8697e15-98e7-4511-810c-bd6b09677b42",
+  "appId": "f357105f-76ea-4bf7-a155-86f0b74f8f18",
+  "title": "CM App",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/f357105f-76ea-4bf7-a155-86f0b74f8f18.png",
+  "downloadUrl": "https://github.com/ThanCoder/cm_app/releases/download/v1.2.5/cm_app.v1.2.5.apk",
+  "isDirectLink": true,
+  "size": "23.6 MB",
+  "version": "1.2.5",
+  "type": "android",
+  "date": 1754589404312
+ },
+ {
   "id": "64e29c07-8ebd-4113-a3aa-ff8746498903",
   "appId": "f357105f-76ea-4bf7-a155-86f0b74f8f18",
   "title": "CM App",

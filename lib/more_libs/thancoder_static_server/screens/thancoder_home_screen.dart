@@ -61,7 +61,7 @@ class _ThancoderHomeScreenState extends State<ThancoderHomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('ယခု Version'),
+            Text('Current Version'),
             Text('PackageName: ${current.packageName}'),
             Text('Version: ${current.version}'),
             Text('Platform: ${current.type.name.toCaptalize()}'),
