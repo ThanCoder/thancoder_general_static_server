@@ -1,0 +1,12 @@
+{
+ "customPath": "/home/than/.thancoder_general_static_server",
+ "serverRootPath": "/home/than/projects/static_servers/thancoder_general_static_server/server",
+ "forwardProxyUrl": "",
+ "browserForwardProxyUrl": "",
+ "proxyUrl": "",
+ "hostUrl": "",
+ "isUseCustomPath": false,
+ "isUseForwardProxy": false,
+ "isUseProxy": false,
+ "isDarkTheme": false
+}
