@@ -8,13 +8,17 @@ import 'package:t_widgets/t_widgets.dart';
 import 'package:thancoder_general_static_server/app/my_app.dart';
 import 'package:thancoder_general_static_server/app/providers/app_provider.dart';
 import 'package:thancoder_general_static_server/app/providers/app_release_provider.dart';
-import 'package:thancoder_general_static_server/more_libs/setting_v1.2.0/setting.dart';
+import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/setting.dart';
+import 'package:thancoder_general_static_server/more_libs/terminal_app/terminal_app.dart';
 import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_server.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Setting.initSetting();
+  await Setting.instance.initSetting(
+    appName: 'thancoder_general_static_server',
+    onShowMessage: (context, message) => showTSnackBar(context, message),
+  );
 
   await TWidgets.instance.init(
     defaultImageAssetsPath: 'assets/thancoder_logo_3.png',
@@ -28,6 +32,7 @@ void main() async {
   final rootPath = await ServerFileServices.createDir(
     '${Directory.current.path}/server',
   );
+
   await ThancoderServer.instance.init(
     // showMessage: (context, message) {
     //   showTSnackBar(context, message);
@@ -49,6 +54,14 @@ void main() async {
     getRootServerDirPath: () => rootPath,
     getRootServerDirUrl: () =>
         'https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server',
+  );
+
+  // terminal
+  await TerminalApp.instance.init(
+    getBashCommand: () =>
+        "git add . && git commit -m 'update' && git push -u origin main",
+    getExecPath: () =>
+        Directory(Setting.getAppConfig.serverRootPath).parent.path,
   );
 
   runApp(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thancoder_general_static_server/app/screens/home/pages/local_page.dart';
-import 'package:thancoder_general_static_server/more_libs/setting_v1.2.0/setting.dart';
+import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/others/app_setting_screen.dart';
 import 'package:thancoder_general_static_server/more_libs/thancoder_static_server/thancoder_server.dart';
 
 class HomeScreen extends StatelessWidget {

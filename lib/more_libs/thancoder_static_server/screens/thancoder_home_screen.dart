@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_widgets/widgets/index.dart';
 import 'package:than_pkg/than_pkg.dart';
+import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/others/index.dart';
 
 import '../thancoder_server.dart';
 
@@ -28,6 +29,8 @@ class _ThancoderHomeScreenState extends State<ThancoderHomeScreen> {
         slivers: [
           // current platform
           SliverToBoxAdapter(child: _getCurrentPlatform()),
+          // check internet
+          AppInternetCheckerWidget(isSliverWidget: true),
           // list
           SliverToBoxAdapter(
             child: FutureBuilder(

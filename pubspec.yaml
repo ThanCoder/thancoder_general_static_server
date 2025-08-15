@@ -9,8 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  than_pkg: ^2.4.1
-  t_widgets: ^0.8.2
+  than_pkg: ^3.0.0
+  t_widgets: ^0.9.7
   provider: ^6.1.5
   dio: ^5.8.0+1
   uuid: ^4.5.1
