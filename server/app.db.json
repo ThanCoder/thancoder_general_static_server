@@ -1,5 +1,14 @@
 [
  {
+  "id": "2e244950-da16-4c50-9c16-de5cde2b77fb",
+  "title": "Novel V3 Pre Version",
+  "desc": "V3 အတွက် Pre Version",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/novelv3/refs/heads/v3.0.0/assets/cover.png",
+  "githubUrl": "https://github.com/ThanCoder/novelv3/tree/v3.0.0",
+  "packageName": "novel_v3",
+  "date": 1755241336878
+ },
+ {
   "id": "7be15ea0-51ff-41c2-aa37-6411db92a7ed",
   "title": "Personal Server App",
   "desc": "Zapya app လိုမျိုးပါ။\nမတူတာက bluetooth,location,permission ဘာညာကိကွ မလုပ်ရဘူး အာရုံမနောက်ရဘူး။\nfile,video တွေကို တစ်ဖက်နဲ့တစ်ဖက် share လို့ရမယ်။\nရိုးရှင်းတယ် လွယ်ကူတယ်။",
