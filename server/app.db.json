@@ -1,12 +1,12 @@
 [
  {
-  "id": "2e244950-da16-4c50-9c16-de5cde2b77fb",
+  "id": "c9023e48-458d-41a4-a195-827c06424642",
   "title": "Novel V3 Pre Version",
-  "desc": "V3 အတွက် Pre Version",
-  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/novelv3/refs/heads/v3.0.0/assets/cover.png",
+  "desc": "Novel V3 Pre Version",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/c9023e48-458d-41a4-a195-827c06424642.png",
   "githubUrl": "https://github.com/ThanCoder/novelv3/tree/v3.0.0",
   "packageName": "novel_v3",
-  "date": 1755241336878
+  "date": 1755243882166
  },
  {
   "id": "7be15ea0-51ff-41c2-aa37-6411db92a7ed",

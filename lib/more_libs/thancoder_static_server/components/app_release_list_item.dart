@@ -32,7 +32,12 @@ class AppReleaseListItem extends StatelessWidget {
               spacing: 8,
               runSpacing: 8,
               children: [
-                TImage(source: release.getCoverPath, size: 120),
+                TImage(
+                  source: release.isCustomCover
+                      ? release.coverUrl
+                      : release.getAppServerCoverUrl,
+                  size: 120,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

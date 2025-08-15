@@ -82,11 +82,16 @@ class _EditAppReleaseScreenState extends State<EditAppReleaseScreen> {
                 maxLines: 1,
                 isSelectedAll: true,
               ),
+              // custom cover url
               TTextField(
                 label: Text('Cover Url'),
                 controller: coverUrlController,
                 maxLines: 1,
                 isSelectedAll: true,
+                onChanged: (value) {
+                  coverUrlController.text = value;
+                  setState(() {});
+                },
               ),
 
               Divider(),
@@ -100,11 +105,14 @@ class _EditAppReleaseScreenState extends State<EditAppReleaseScreen> {
                 spacing: 5,
                 children: [
                   Text('isDirectLink'),
-                  Switch.adaptive(value: release.isDirectLink, onChanged: (value) {
-                    setState(() {
-                      release.isDirectLink = value;
-                    });
-                  },),
+                  Switch.adaptive(
+                    value: release.isDirectLink,
+                    onChanged: (value) {
+                      setState(() {
+                        release.isDirectLink = value;
+                      });
+                    },
+                  ),
                 ],
               ),
               Divider(),
@@ -129,7 +137,7 @@ class _EditAppReleaseScreenState extends State<EditAppReleaseScreen> {
                 },
               ),
               Divider(),
-              
+
               TTextField(
                 label: Text('Desc'),
                 controller: descController,

@@ -39,7 +39,7 @@ class _AppReleaseScreenState extends State<AppReleaseScreen> {
           return CustomScrollView(
             slivers: [
               // header
-              SliverToBoxAdapter(child: _getCoverHeader()),
+              SliverToBoxAdapter(child: _getOnlineCoverList()),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -62,7 +62,7 @@ class _AppReleaseScreenState extends State<AppReleaseScreen> {
     );
   }
 
-  Widget _getCoverHeader() {
+  Widget _getOnlineCoverList() {
     return FutureBuilder(
       future: AppReleaseServices.getOnlineCoverList(widget.app.id),
       builder: (context, snapshot) {
@@ -73,7 +73,7 @@ class _AppReleaseScreenState extends State<AppReleaseScreen> {
           }
         }
         // not found
-        return TImageFile(path: widget.app.getCoverPath, size: 150);
+        return SizedBox.shrink();
       },
     );
   }

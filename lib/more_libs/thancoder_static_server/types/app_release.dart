@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:than_pkg/services/map_services.dart';
 import 'package:uuid/uuid.dart';
 
 import '../thancoder_server.dart';
@@ -18,6 +19,7 @@ class AppRelease {
   String version;
   AppReleaseTypes type;
   DateTime date;
+  bool isCustomCover;
   AppRelease({
     required this.id,
     required this.appId,
@@ -30,6 +32,7 @@ class AppRelease {
     required this.version,
     required this.type,
     required this.date,
+    required this.isCustomCover,
   });
 
   factory AppRelease.create({
@@ -42,6 +45,7 @@ class AppRelease {
     String downloadUrl = '',
     String size = '0 MB',
     String version = '1.0.0',
+    bool isCustomCover = false,
   }) {
     final id = Uuid().v4();
     return AppRelease(
@@ -56,6 +60,7 @@ class AppRelease {
       version: version,
       type: type,
       date: DateTime.now(),
+      isCustomCover: isCustomCover,
     );
   }
 
@@ -88,6 +93,7 @@ class AppRelease {
       isDirectLink: map['isDirectLink'] as bool,
       size: map['size'] as String,
       version: map['version'] as String,
+      isCustomCover: MapServices.getBool(map, ['isCustomCover']),
       type: AppReleaseTypes.getTypeFromName(typeName),
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
     );
@@ -106,6 +112,10 @@ class AppRelease {
     return ServerFileServices.getServerFilesUrl('$id.png');
   }
 
+  String get getAppServerCoverUrl {
+    return ServerFileServices.getServerFilesUrl('$appId.png');
+  }
+
   //
   static Future<void> deleteAll(String appId) async {
     try {
@@ -118,7 +128,7 @@ class AppRelease {
       }
       // delete
       final dbFile = File(AppReleaseServices.getDBPath(appId));
-      if(await dbFile.exists()){
+      if (await dbFile.exists()) {
         await dbFile.delete();
       }
     } catch (e) {
