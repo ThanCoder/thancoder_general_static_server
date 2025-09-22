@@ -5,15 +5,14 @@ import 'package:than_pkg/than_pkg.dart';
 import '../setting.dart';
 
 class PathUtil {
-  
-
   static Future<String> getAssetRealPathPath(String rootPath) async {
     final bytes = await rootBundle.load('assets/$rootPath');
     final name = rootPath.getName();
     final cacheFile = File('${PathUtil.getCachePath()}/$name');
     if (!cacheFile.existsSync()) {
       cacheFile.writeAsBytesSync(
-          bytes.buffer.asInt8List(bytes.offsetInBytes, bytes.lengthInBytes));
+        bytes.buffer.asInt8List(bytes.offsetInBytes, bytes.lengthInBytes),
+      );
     }
     return cacheFile.path;
   }
@@ -22,39 +21,46 @@ class PathUtil {
     return path.split('/').last;
   }
 
-  static String getHomePath() {
-    return createDir(Setting.appRootPath);
+  static String getHomePath({String? name}) {
+    final fileName = (name != null && name.isNotEmpty) ? '/$name' : '';
+    return createDir('${Setting.appRootPath}$fileName');
   }
 
-  static String getConfigPath() {
-    return createDir('${getHomePath()}/config');
+  static String getConfigPath({String? name}) {
+    final fileName = (name != null && name.isNotEmpty) ? '/$name' : '';
+    return createDir('${getHomePath()}/config$fileName');
   }
 
-  static String getLibaryPath() {
-    return createDir('${getHomePath()}/libary');
+  static String getLibaryPath({String? name}) {
+    final fileName = (name != null && name.isNotEmpty) ? '/$name' : '';
+    return createDir('${getHomePath()}/libary$fileName');
   }
 
-  static String getDatabasePath() {
-    return createDir('${getHomePath()}/database');
+  static String getDatabasePath({String? name}) {
+    final fileName = (name != null && name.isNotEmpty) ? '/$name' : '';
+    return createDir('${getHomePath()}/database$fileName');
   }
 
   static String getDatabaseSourcePath() {
     return createDir('${getHomePath()}/databaseSource');
   }
 
-  static String getCachePath() {
+  static String getCachePath({String? name}) {
+    final fileName = (name != null && name.isNotEmpty) ? '/$name' : '';
     String homeDir = createDir(Setting.appConfigPath);
-    return createDir('$homeDir/cache');
+    return createDir('$homeDir/cache$fileName');
   }
 
   static String getSourcePath() {
     return createDir('${getHomePath()}/source');
   }
 
-  static String getOutPath() {
+  static String getOutPath({String? name}) {
+    final fileName = (name != null && name.isNotEmpty) ? '/$name' : '';
     String download = createDir(
-        '${Setting.appExternalPath}/${Platform.isAndroid ? 'Download' : 'Downloads'}');
-    return createDir('$download/${Setting.instance.appName}');
+      '${Setting.appExternalPath}/${Platform.isAndroid ? 'Download' : 'Downloads'}',
+    );
+    return createDir('$download/${Setting.instance.appName}$fileName');
   }
 
   static String createDir(String path) {
@@ -70,3 +76,4 @@ class PathUtil {
     return path;
   }
 }
+

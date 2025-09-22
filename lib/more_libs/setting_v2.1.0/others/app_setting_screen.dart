@@ -6,7 +6,7 @@ import 'package:than_pkg/than_pkg.dart';
 
 import '../setting.dart';
 import 'android_app_services.dart';
-import 'app_config.dart';
+import '../app_config.dart';
 import 'app_notifier.dart';
 import 'theme_component.dart';
 

@@ -9,13 +9,15 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  than_pkg: ^3.0.0
-  t_widgets: ^0.9.7
+  than_pkg: ^4.3.1
+  t_widgets: ^1.5.0
   provider: ^6.1.5
-  dio: ^5.8.0+1
+  dio: ^5.9.0
   uuid: ^4.5.1
   expandable_text: ^2.3.0
   badges: ^3.1.2
+  t_client: ^0.0.6
+  http: ^1.5.0
 
 dev_dependencies:
   flutter_test:

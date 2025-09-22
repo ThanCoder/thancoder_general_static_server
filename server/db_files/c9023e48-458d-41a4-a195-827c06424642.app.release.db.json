@@ -1,1 +1,15 @@
-[]
+[
+ {
+  "id": "26de6ad8-02dd-4587-8d3a-f012adb34f90",
+  "appId": "c9023e48-458d-41a4-a195-827c06424642",
+  "title": "Novel V3 Pre Version",
+  "desc": "",
+  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/c9023e48-458d-41a4-a195-827c06424642.png",
+  "downloadUrl": "",
+  "isDirectLink": false,
+  "size": "0 MB",
+  "version": "",
+  "type": "android",
+  "date": 1755244298667
+ }
+]

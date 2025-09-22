@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:than_pkg/than_pkg.dart';
 
+import 'app_config.dart';
+import 'others/app_setting_screen.dart';
 import 'others/index.dart';
 
 class Setting {
@@ -16,6 +18,7 @@ class Setting {
   static String appRootPath = '';
   // app output path
   static String appExternalPath = '';
+  static String appVersionLabel = '';
   static ValueNotifier<AppConfig> get getAppConfigNotifier => appConfigNotifier;
   static String get getOutPath => PathUtil.getOutPath();
 
@@ -36,10 +39,12 @@ class Setting {
     bool isShowDebugLog = true,
     void Function(BuildContext context, String message)? onShowMessage,
     bool isAppRefreshConfigPathChanged = false,
+    String appVersionLabel = '',
   }) async {
     try {
       Setting.isShowDebugLog = isShowDebugLog;
       Setting.isAppRefreshConfigPathChanged = isAppRefreshConfigPathChanged;
+      Setting.appVersionLabel = appVersionLabel;
       this.appName = appName;
       this.onShowMessage = onShowMessage;
 

@@ -3,7 +3,7 @@
   "id": "c9023e48-458d-41a4-a195-827c06424642",
   "title": "Novel V3 Pre Version",
   "desc": "Novel V3 Pre Version",
-  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/c9023e48-458d-41a4-a195-827c06424642.png",
+  "coverSource": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/c9023e48-458d-41a4-a195-827c06424642.png",
   "githubUrl": "https://github.com/ThanCoder/novelv3/tree/v3.0.0",
   "packageName": "novel_v3",
   "date": 1755243882166
@@ -12,7 +12,7 @@
   "id": "7be15ea0-51ff-41c2-aa37-6411db92a7ed",
   "title": "Personal Server App",
   "desc": "Zapya app လိုမျိုးပါ။\nမတူတာက bluetooth,location,permission ဘာညာကိကွ မလုပ်ရဘူး အာရုံမနောက်ရဘူး။\nfile,video တွေကို တစ်ဖက်နဲ့တစ်ဖက် share လို့ရမယ်။\nရိုးရှင်းတယ် လွယ်ကူတယ်။",
-  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/7be15ea0-51ff-41c2-aa37-6411db92a7ed.png",
+  "coverSource": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/7be15ea0-51ff-41c2-aa37-6411db92a7ed.png",
   "githubUrl": "https://github.com/ThanCoder/personal_server_app",
   "packageName": "person_server",
   "date": 1754556690459
@@ -21,7 +21,7 @@
   "id": "f357105f-76ea-4bf7-a155-86f0b74f8f18",
   "title": "CM App",
   "desc": "",
-  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/f357105f-76ea-4bf7-a155-86f0b74f8f18.png",
+  "coverSource": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/f357105f-76ea-4bf7-a155-86f0b74f8f18.png",
   "githubUrl": "https://github.com/ThanCoder/cm_app",
   "packageName": "cm_app",
   "date": 1754545064426
@@ -30,7 +30,7 @@
   "id": "321c3044-21a8-45fc-a6b9-1a97d5e946ba",
   "title": "Novel V3",
   "desc": "",
-  "coverUrl": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
+  "coverSource": "https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server/files/321c3044-21a8-45fc-a6b9-1a97d5e946ba.png",
   "githubUrl": "https://github.com/ThanCoder/novelv3",
   "packageName": "novel_v3",
   "date": 1754538825933

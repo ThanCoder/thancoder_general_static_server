@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "title": "Forward Proxy",
+    "url": "https://express-forward-proxy.vercel.app",
+    "type": "forwardProxy"
+  },
+  {
+    "id": "2",
+    "title": "Forward Proxy 2",
+    "url": "https://express-forward-proxy2.vercel.app",
+    "type": "forwardProxy"
+  },
+  {
+    "id": "3",
+    "title": "Than Forward Proxy",
+    "url": "https://than-forward-proxy.vercel.app",
+    "type": "forwardProxy"
+  }
+]

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:than_pkg/than_pkg.dart';
 
+import '../setting.dart';
+
 class AppCurrentVersion extends StatelessWidget {
   const AppCurrentVersion({super.key});
 
@@ -12,7 +14,11 @@ class AppCurrentVersion extends StatelessWidget {
         final data = snapshot.data;
         if (snapshot.hasData && data != null) {
           return Card(
-            child: ListTile(title: Text('Current Version: ${data.version}')),
+            child: ListTile(
+              title: Text(
+                'Current Version: ${data.version} ${Setting.appVersionLabel}',
+              ),
+            ),
           );
         }
         return SizedBox.shrink();
