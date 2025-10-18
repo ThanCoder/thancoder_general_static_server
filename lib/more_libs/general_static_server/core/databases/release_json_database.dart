@@ -12,12 +12,6 @@ class ReleaseJsonDatabase extends JsonDatabase<ReleaseApp> {
       );
 
   @override
-  Future<int> delete(String id) {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
-
-  @override
   ReleaseApp from(Map<String, dynamic> map) {
     final res = ReleaseApp.fromMap(map);
     // final path =
@@ -30,8 +24,7 @@ class ReleaseJsonDatabase extends JsonDatabase<ReleaseApp> {
   }
 
   @override
-  Future<ReleaseApp> update(String id, ReleaseApp value) {
-    // TODO: implement update
-    throw UnimplementedError();
+  String getId(ReleaseApp value) {
+    return value.id;
   }
 }

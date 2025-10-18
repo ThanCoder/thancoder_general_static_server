@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t_widgets/t_widgets.dart';
-import 'package:thancoder_general_static_server/app/ui/home/github_page.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/ui/github_page.dart';
 import 'package:thancoder_general_static_server/app/ui/home/home_page.dart';
 
 class HomeScreen extends StatefulWidget {

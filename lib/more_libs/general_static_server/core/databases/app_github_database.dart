@@ -12,18 +12,6 @@ class AppGithubDatabase extends GithubDatabase<App> {
       );
 
   @override
-  Future<App> add(App value) {
-    // TODO: implement add
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<int> delete(String id) {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
-
-  @override
   App from(Map<String, dynamic> map) {
     final app = App.fromMap(map);
     final coverUrl = '${storage.getPath(app.id)}.png';
@@ -31,8 +19,7 @@ class AppGithubDatabase extends GithubDatabase<App> {
   }
 
   @override
-  Future<App> update(String id, App value) {
-    // TODO: implement update
-    throw UnimplementedError();
+  String getId(App value) {
+    return value.id;
   }
 }

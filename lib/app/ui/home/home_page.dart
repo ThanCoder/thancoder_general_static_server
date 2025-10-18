@@ -3,6 +3,7 @@ import 'package:t_widgets/t_widgets.dart';
 import 'package:thancoder_general_static_server/app/route_helper.dart';
 import 'package:thancoder_general_static_server/app/ui/app_content/app_content_screen.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/services/app_services.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/ui/compoments/app_list_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,28 +32,15 @@ class _HomePageState extends State<HomePage> {
           final list = snapshot.data ?? [];
           return ListView.builder(
             itemCount: list.length,
-            itemBuilder: (context, index) {
-              final item = list[index];
-              return GestureDetector(
-                onTap: () {
-                  goRoute(
-                    context,
-                    builder: (context) => AppContentScreen(app: item),
-                  );
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 160,
-                      height: 200,
-                      child: TImage(source: item.coverSource),
-                    ),
-                    Text(item.title),
-                  ],
-                ),
-              );
-            },
+            itemBuilder: (context, index) => AppListItem(
+              app: list[index],
+              onClicked: (app) {
+                goRoute(
+                  context,
+                  builder: (context) => AppContentScreen(app: app),
+                );
+              },
+            ),
           );
         }
         return Center(child: Text('Not List'));

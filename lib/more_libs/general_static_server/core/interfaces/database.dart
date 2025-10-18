@@ -1,7 +1,7 @@
 import 'storage.dart';
 
 mixin DatabaseChangedListener {
-  void onDatabaseChanged(DatabaseChangedListenerTypes event, String? key);
+  void onDatabaseChanged(DatabaseChangedListenerTypes event, String? id);
 }
 
 enum DatabaseChangedListenerTypes { save, delete, add, update }
@@ -14,9 +14,10 @@ abstract class Database<T> {
   Database({required this.root, required this.storage});
 
   Future<T> add(T value);
-  Future<T> update(String id, T value);
+  Future<bool> update(String id, T value);
   Future<int> delete(String id);
-  Future<List<T>> getAll({Map<String, dynamic> query = const {}});
+  Future<List<T>> getAll({Map<String, dynamic>? query});
+  Future<T?> getById(String id);
 
   // listener
   final List<DatabaseChangedListener> _listener = [];
@@ -32,9 +33,9 @@ abstract class Database<T> {
     _listener.clear();
   }
 
-  void notify(DatabaseChangedListenerTypes event, String? key) {
+  void notify(DatabaseChangedListenerTypes event, String? id) {
     for (var ev in _listener) {
-      ev.onDatabaseChanged(event, key);
+      ev.onDatabaseChanged(event, id);
     }
   }
 }

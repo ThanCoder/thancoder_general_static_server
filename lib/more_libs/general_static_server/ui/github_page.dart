@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_widgets/t_widgets.dart';
-import 'package:thancoder_general_static_server/more_libs/general_static_server/services/app_services.dart';
+
+import '../services/app_services.dart';
 
 class GithubPage extends StatefulWidget {
   const GithubPage({super.key});

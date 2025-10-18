@@ -41,32 +41,33 @@ class _AppContentScreenState extends State<AppContentScreen> {
     return SliverList.separated(
       itemCount: list.length,
       separatorBuilder: (context, index) => Divider(),
-      itemBuilder: (context, index) {
-        final item = list[index];
-        return Row(
-          spacing: 5,
+      itemBuilder: (context, index) => _getListItem(list[index]),
+    );
+  }
+
+  Widget _getListItem(ReleaseApp release) {
+    return Row(
+      spacing: 5,
+      children: [
+        SizedBox(
+          width: 130,
+          height: 150,
+          child: TImage(source: release.coverSource),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 4,
           children: [
-            SizedBox(
-              width: 130,
-              height: 150,
-              child: TImage(source: item.coverSource),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 4,
-              children: [
-                Text('T: ${item.title}'),
-                Text('Size: ${item.size}'),
-                Text('Version: ${item.version}'),
-                Text('Type: ${item.type.name}'),
-                Text('DirectLink: ${item.isDirectLink ? 'Yes' : 'No'}'),
-                Text('Date: ${item.date.toParseTime()}'),
-                Text('Desc: ${item.desc}'),
-              ],
-            ),
+            Text('T: ${release.title}'),
+            Text('Size: ${release.size}'),
+            Text('Version: ${release.version}'),
+            Text('Type: ${release.type.name}'),
+            Text('DirectLink: ${release.isDirectLink ? 'Yes' : 'No'}'),
+            Text('Date: ${release.date.toParseTime()}'),
+            Text('Desc: ${release.desc}'),
           ],
-        );
-      },
+        ),
+      ],
     );
   }
 }

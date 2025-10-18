@@ -457,10 +457,10 @@ packages:
     dependency: "direct main"
     description:
       name: t_widgets
-      sha256: db0a75ffce6726c4431c8ed57e72d9f4455dc19237ba582b0ed61bfdcbfb4380
+      sha256: "901db1fbf0663a85c2f3cace3c2c9cb376e54982da73d9013cb861f884049809"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.0"
+    version: "1.5.2"
   term_glyph:
     dependency: transitive
     description:
@@ -481,10 +481,10 @@ packages:
     dependency: "direct main"
     description:
       name: than_pkg
-      sha256: e53fccd7a04ea157ff9b83ab849d5fa6eb9a7aa60d6b01dc743f885dd851af0c
+      sha256: "4f98d26126bac8068e7140f5cdf676adf1240ac77440f332afe0d31d48f12add"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.1"
+    version: "4.5.3"
   timeago:
     dependency: transitive
     description:

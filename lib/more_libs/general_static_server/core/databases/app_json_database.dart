@@ -11,9 +11,8 @@ class AppJsonDatabase extends JsonDatabase<App> {
       );
 
   @override
-  Future<int> delete(String id) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  String getId(App value) {
+    return value.id;
   }
 
   @override
@@ -26,11 +25,5 @@ class AppJsonDatabase extends JsonDatabase<App> {
   @override
   Map<String, dynamic> to(App value) {
     return value.toMap();
-  }
-
-  @override
-  Future<App> update(String id, App value) {
-    // TODO: implement update
-    throw UnimplementedError();
   }
 }
