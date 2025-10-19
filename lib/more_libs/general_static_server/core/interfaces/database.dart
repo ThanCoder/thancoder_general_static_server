@@ -6,7 +6,7 @@ mixin DatabaseChangedListener {
 
 enum DatabaseChangedListenerTypes { save, delete, add, update }
 
-enum DatabaseTypes { json, github }
+enum DatabaseTypes { local, api }
 
 abstract class Database<T> {
   final String root;

@@ -1,13 +1,12 @@
-import '../../general_server.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/services/server_path_services.dart';
+
 import '../index.dart';
 
 class AppJsonDatabase extends JsonDatabase<App> {
   AppJsonDatabase()
     : super(
-        root: '${GeneralServer.instance.getServerPath()}/app.db.json',
-        storage: FileStorage(
-          root: '${GeneralServer.instance.getServerPath()}/files',
-        ),
+        root: ServerPathServices.getLocal.getRoot(name: 'app.db.json'),
+        storage: FileStorage(root: ServerPathServices.getLocal.getFiles()),
       );
 
   @override

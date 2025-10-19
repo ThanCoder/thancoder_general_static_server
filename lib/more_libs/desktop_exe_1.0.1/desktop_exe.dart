@@ -19,7 +19,7 @@ class DesktopExe {
   DesktopExe._();
   factory DesktopExe() => instance;
 
-  Future<void> exportNotExists({
+  Future<void> export({
     required String name,
     required String assetsIconPath,
     String? customDesktopFilePath,
@@ -28,6 +28,7 @@ class DesktopExe {
     String path = '',
     bool terminal = false,
     bool startupNotify = false,
+    bool isOverrideExe = false,
   }) async {
     try {
       if (!Platform.isLinux) return;
@@ -40,6 +41,10 @@ class DesktopExe {
 
       // write content
       final file = File(desktopFilePath);
+      // override =false
+      if (isOverrideExe && file.existsSync()) {
+        return;
+      }
       final stringBuff = StringBuffer();
       stringBuff.writeln('[Desktop Entry]');
       stringBuff.writeln('Version=1.0');

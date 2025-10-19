@@ -6,6 +6,7 @@ import 'package:t_client/t_client.dart';
 import 'package:t_widgets/t_widgets.dart';
 import 'package:thancoder_general_static_server/app/my_app.dart';
 import 'package:thancoder_general_static_server/more_libs/desktop_exe_1.0.1/desktop_exe.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/constants.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/general_server.dart';
 import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/setting.dart';
 import 'package:thancoder_general_static_server/more_libs/terminal_app/terminal_app.dart';
@@ -35,10 +36,8 @@ void main() async {
   }
 
   await GeneralServer.instance.init(
-    getServerUrl: () =>
-        'https://raw.githubusercontent.com/ThanCoder/thancoder_general_static_server/refs/heads/main/server',
-    getServerPath: () =>
-        '/home/than/projects/static_servers/thancoder_general_static_server/server',
+    getServerUrl: () => apiServerUrl,
+    getServerPath: () => localServerPath,
   );
 
   // await ThancoderServer.instance.init(
@@ -73,7 +72,7 @@ void main() async {
         Directory(Setting.getAppConfig.serverRootPath).parent.path,
   );
 
-  await DesktopExe.instance.exportNotExists(
+  await DesktopExe.instance.export(
     name: 'thancoder_general_static_server',
     assetsIconPath: 'assets/thancoder_logo_1.png',
   );

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../services/client_services.dart';
 import 'database.dart';
 
-abstract class GithubDatabase<T> extends Database<T> {
-  GithubDatabase({required super.root, required super.storage});
+abstract class ApiDatabase<T> extends Database<T> {
+  ApiDatabase({required super.root, required super.storage});
 
   T from(Map<String, dynamic> map);
   String getId(T value);
@@ -24,7 +24,7 @@ abstract class GithubDatabase<T> extends Database<T> {
       final resList = jsonList.map((map) => from(map)).toList();
       _list.addAll(resList);
     } catch (e) {
-      debugPrint('[GithubDatabase:getAll]: ${e.toString()}');
+      debugPrint('[ApiDatabase:getAll]: ${e.toString()}');
     }
     return _list;
   }

@@ -1,15 +1,25 @@
+import 'package:thancoder_general_static_server/more_libs/general_static_server/core/databases/tutorial_api_database.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/core/databases/tutorial_local_database.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/core/models/tutorial.dart';
+
 import '../index.dart';
 
 class DatabaseFactory {
-  static Database<T> create<T>({DatabaseTypes type = DatabaseTypes.json}) {
-    if (type == DatabaseTypes.json) {
+  static Database<T> create<T>({DatabaseTypes type = DatabaseTypes.local}) {
+    if (type == DatabaseTypes.local) {
       if (T == App) {
         return AppJsonDatabase() as Database<T>;
       }
+      if (T == Tutorial) {
+        return TutorialLocalDatabase() as Database<T>;
+      }
     }
-    if (type == DatabaseTypes.github) {
+    if (type == DatabaseTypes.api) {
       if (T == App) {
-        return AppGithubDatabase() as Database<T>;
+        return AppApiDatabase() as Database<T>;
+      }
+      if (T == Tutorial) {
+        return TutorialApiDatabase() as Database<T>;
       }
     }
 

@@ -11,10 +11,10 @@ class AppServices {
     return _dbCache[key]!;
   }
 
-  static Database<App> get getGithubDB {
+  static Database<App> get getApiDB {
     final key = 'github';
     if (!_dbCache.containsKey(key)) {
-      _dbCache[key] = DatabaseFactory.create<App>(type: DatabaseTypes.github);
+      _dbCache[key] = DatabaseFactory.create<App>(type: DatabaseTypes.api);
     }
     return _dbCache[key]!;
   }

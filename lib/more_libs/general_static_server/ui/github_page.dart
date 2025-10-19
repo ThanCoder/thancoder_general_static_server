@@ -21,7 +21,7 @@ class _GithubPageState extends State<GithubPage> {
 
   Widget _getAppList() {
     return FutureBuilder(
-      future: AppServices.getGithubDB.getAll(),
+      future: AppServices.getApiDB.getAll(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: TLoader.random());
