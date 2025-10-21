@@ -1,5 +1,3 @@
-import 'storage.dart';
-
 mixin DatabaseChangedListener {
   void onDatabaseChanged(DatabaseChangedListenerTypes event, String? id);
 }
@@ -10,8 +8,7 @@ enum DatabaseTypes { local, api }
 
 abstract class Database<T> {
   final String root;
-  final Storage storage;
-  Database({required this.root, required this.storage});
+  Database({required this.root});
 
   Future<T> add(T value);
   Future<bool> update(String id, T value);

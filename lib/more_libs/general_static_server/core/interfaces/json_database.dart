@@ -6,8 +6,9 @@ import 'package:than_pkg/t_database/index.dart';
 import 'database.dart';
 
 abstract class JsonDatabase<T> extends Database<T> {
-  JsonDatabase({required super.root, required super.storage});
+  JsonDatabase({required super.root, this.isUseCacheList = true});
   final JsonIO io = JsonIO.instance;
+  final bool isUseCacheList;
 
   T from(Map<String, dynamic> map);
   Map<String, dynamic> to(T value);
@@ -17,7 +18,7 @@ abstract class JsonDatabase<T> extends Database<T> {
   @override
   Future<List<T>> getAll({Map<String, dynamic>? query}) async {
     try {
-      if (_list.isNotEmpty) return _list;
+      if (isUseCacheList && _list.isNotEmpty) return _list;
       final source = await io.read(root);
 
       if (source.isEmpty) return [];
@@ -29,7 +30,7 @@ abstract class JsonDatabase<T> extends Database<T> {
     } catch (e) {
       debugPrint('[JsonDatabase:getAll]:${e.toString()}');
     }
-    return [];
+    return _list;
   }
 
   @override

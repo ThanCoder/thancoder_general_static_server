@@ -1,26 +1,31 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-class ServerPathServices {
-  final String root;
-  ServerPathServices({required this.root});
+import 'package:thancoder_general_static_server/more_libs/general_static_server/general_server.dart';
 
-  static void init({required String localRoot, required String apiRoot}) {
-    _cache['local'] = ServerPathServices(root: localRoot);
-    _cache['api'] = ServerPathServices(root: apiRoot);
+class GeneralServerPathServices {
+  final String root;
+  GeneralServerPathServices({required this.root});
+
+  static void init() {
+    _cache['local'] = GeneralServerPathServices(
+      root: GeneralServer.instance.getServerPath(),
+    );
+    _cache['api'] = GeneralServerPathServices(
+      root: GeneralServer.instance.getServerUrl(),
+    );
   }
 
-  static final Map<String, ServerPathServices> _cache = {};
+  static final Map<String, GeneralServerPathServices> _cache = {};
 
-  static ServerPathServices get getLocal {
+  static GeneralServerPathServices get getLocal {
     if (_cache['local'] == null) {
-      throw Exception('[Usage]: `ServerPathServices.init()`');
+      throw Exception('[Usage]: `GeneralServerPathServices.init()`');
     }
 
     return _cache['local']!;
   }
 
-  static ServerPathServices get getApi {
+  static GeneralServerPathServices get getApi {
     if (_cache['api'] == null) {
-      throw Exception('[Usage]: `ServerPathServices.init()`');
+      throw Exception('[Usage]: `GeneralServerPathServices.init()`');
     }
 
     return _cache['api']!;

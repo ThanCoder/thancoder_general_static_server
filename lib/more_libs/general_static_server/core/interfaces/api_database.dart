@@ -6,7 +6,7 @@ import '../../services/client_services.dart';
 import 'database.dart';
 
 abstract class ApiDatabase<T> extends Database<T> {
-  ApiDatabase({required super.root, required super.storage});
+  ApiDatabase({required super.root});
 
   T from(Map<String, dynamic> map);
   String getId(T value);

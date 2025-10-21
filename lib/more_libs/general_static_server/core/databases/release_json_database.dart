@@ -1,15 +1,9 @@
-import '../../general_server.dart';
-import '../interfaces/file_storage.dart';
+
 import '../interfaces/json_database.dart';
 import '../models/release_app.dart';
 
 class ReleaseJsonDatabase extends JsonDatabase<ReleaseApp> {
-  ReleaseJsonDatabase({required super.root})
-    : super(
-        storage: FileStorage(
-          root: '${GeneralServer.instance.getServerPath()}/files',
-        ),
-      );
+  ReleaseJsonDatabase({required super.root});
 
   @override
   ReleaseApp from(Map<String, dynamic> map) {

@@ -1,11 +1,21 @@
 [
   {
     "id": "how_to_export_n3_data",
-    "title": "how_to_export_n3_data",
-    "desc": "",
-    "packageName": "cm",
+    "title": "N3 Data File ထုတ်နည်း",
+    "desc": "N3 Data File ထုတ်နည်း",
+    "packageName": "novel_v3",
     "imageListRangeNumber": 6,
-    "rootDirPath": "server/tutorial_files/1",
-    "type": "images"
+    "rootDirPath": "tutorial_files/how_to_export_n3_data",
+    "type": "images",
+    "mimeType": "jpg"
+  },
+  {
+    "id": "how_to_install_n3_data_form_static_server",
+    "title": "Static Server ကနေ Novel App ထဲထည့်သွင်းနည်း",
+    "packageName": "novel_v3",
+    "imageListRangeNumber": 15,
+    "rootDirPath": "tutorial_files/how_to_install_n3_data_form_static_server",
+    "type": "images",
+    "mimeType": "jpg"
   }
 ]

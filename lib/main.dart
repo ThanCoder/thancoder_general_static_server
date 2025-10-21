@@ -8,6 +8,8 @@ import 'package:thancoder_general_static_server/app/my_app.dart';
 import 'package:thancoder_general_static_server/more_libs/desktop_exe_1.0.1/desktop_exe.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/constants.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/general_server.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/services/general_server_path_services.dart';
+import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/others/index.dart';
 import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/setting.dart';
 import 'package:thancoder_general_static_server/more_libs/terminal_app/terminal_app.dart';
 
@@ -23,6 +25,7 @@ void main() async {
   await TWidgets.instance.init(
     defaultImageAssetsPath: 'assets/thancoder_logo_3.png',
     getDarkMode: () => Setting.getAppConfig.isDarkTheme,
+    getCachePath: () => PathUtil.getCachePath(),
     onDownloadImage: (url, savePath) async {
       // await Dio().download(url, savePath);
       await client.download(url, savePath: savePath);
@@ -39,6 +42,7 @@ void main() async {
     getServerUrl: () => apiServerUrl,
     getServerPath: () => localServerPath,
   );
+  GeneralServerPathServices.init();
 
   // await ThancoderServer.instance.init(
   //   // showMessage: (context, message) {

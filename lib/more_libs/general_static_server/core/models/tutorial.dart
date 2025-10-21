@@ -21,6 +21,8 @@ class Tutorial {
   final String rootDirPath;
   final String images;
   final TutorialTypes type;
+  final String mimeType;
+
   Tutorial({
     required this.id,
     required this.title,
@@ -30,7 +32,16 @@ class Tutorial {
     required this.rootDirPath,
     required this.images,
     required this.type,
+    required this.mimeType,
   });
+
+  List<String> getImageList(String rootPath) {
+    List<String> list = [];
+    for (var i = 1; i <= imageListRangeNumber; i++) {
+      list.add('$rootPath/$rootDirPath/$i.$mimeType');
+    }
+    return list;
+  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,6 +53,7 @@ class Tutorial {
       'rootDirPath': rootDirPath,
       'images': images,
       'type': type.name,
+      'mimeType': mimeType,
     };
   }
 
@@ -55,6 +67,7 @@ class Tutorial {
       rootDirPath: map.getString(['rootDirPath']),
       images: map.getString(['images']),
       type: TutorialTypes.getName(map.getString(['type'])),
+      mimeType: map.getString(['mimeType'], def: 'png'),
     );
   }
 }

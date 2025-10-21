@@ -1,29 +1,27 @@
 import 'package:thancoder_general_static_server/more_libs/general_static_server/core/index.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/core/models/tutorial.dart';
-import 'package:thancoder_general_static_server/more_libs/general_static_server/services/server_path_services.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/services/general_server_path_services.dart';
 
 class TutorialLocalDatabase extends JsonDatabase<Tutorial> {
-  TutorialLocalDatabase()
+  TutorialLocalDatabase({super.isUseCacheList})
     : super(
-        root: ServerPathServices.getLocal.getRoot(name: 'tutorial.db.json'),
-        storage: FileStorage(root: ''),
+        root: GeneralServerPathServices.getLocal.getRoot(
+          name: 'tutorial.db.json',
+        ),
       );
 
   @override
   Tutorial from(Map<String, dynamic> map) {
-    // TODO: implement from
-    throw UnimplementedError();
+    return Tutorial.fromMap(map);
   }
 
   @override
   String getId(Tutorial value) {
-    // TODO: implement getId
-    throw UnimplementedError();
+    return value.id;
   }
 
   @override
   Map<String, dynamic> to(Tutorial value) {
-    // TODO: implement to
-    throw UnimplementedError();
+    return value.toMap();
   }
 }

@@ -5,13 +5,17 @@ import 'package:thancoder_general_static_server/more_libs/general_static_server/
 import '../index.dart';
 
 class DatabaseFactory {
-  static Database<T> create<T>({DatabaseTypes type = DatabaseTypes.local}) {
+  static Database<T> create<T>({
+    DatabaseTypes type = DatabaseTypes.local,
+    bool isUseCacheList = true,
+  }) {
     if (type == DatabaseTypes.local) {
       if (T == App) {
         return AppJsonDatabase() as Database<T>;
       }
       if (T == Tutorial) {
-        return TutorialLocalDatabase() as Database<T>;
+        return TutorialLocalDatabase(isUseCacheList: isUseCacheList)
+            as Database<T>;
       }
     }
     if (type == DatabaseTypes.api) {
