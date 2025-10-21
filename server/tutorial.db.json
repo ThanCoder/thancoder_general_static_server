@@ -17,5 +17,41 @@
     "rootDirPath": "tutorial_files/how_to_install_n3_data_form_static_server",
     "type": "images",
     "mimeType": "jpg"
+  },
+  {
+    "id": "how_to_install_n3_data_manager",
+    "title": "N3 Manager ကနေ Data ထည့်သွင်းနည်း",
+    "packageName": "novel_v3",
+    "imageListRangeNumber": 4,
+    "rootDirPath": "tutorial_files/how_to_install_n3_data_manager",
+    "type": "images",
+    "mimeType": "jpg"
+  },
+  {
+    "id": "how_to_receive_data",
+    "title": "အခြားသူ မျှဝေထားတဲ့ Novel တွေကိုရယူနည်း",
+    "packageName": "novel_v3",
+    "imageListRangeNumber": 5,
+    "rootDirPath": "tutorial_files/how_to_receive_data",
+    "type": "images",
+    "mimeType": "jpg"
+  },
+  {
+    "id": "how_to_share_data",
+    "title": "အခြားသူကို Novel မျှဝေနည်း",
+    "packageName": "novel_v3",
+    "imageListRangeNumber": 3,
+    "rootDirPath": "tutorial_files/how_to_share_data",
+    "type": "images",
+    "mimeType": "jpg"
+  },
+  {
+    "id": "show_to_use_pdf_reader",
+    "title": "Novel App ကို PDF Reader အဖြစ်အသုံးပြုနည်း",
+    "packageName": "novel_v3",
+    "imageListRangeNumber": 15,
+    "rootDirPath": "tutorial_files/show_to_use_pdf_reader",
+    "type": "images",
+    "mimeType": "jpg"
   }
 ]

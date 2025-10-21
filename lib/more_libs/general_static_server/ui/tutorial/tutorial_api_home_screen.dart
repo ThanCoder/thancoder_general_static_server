@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_widgets/widgets/t_loader.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/core/models/tutorial.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/general_server.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/services/tutorial_services.dart';
@@ -20,14 +21,23 @@ class _TutorialApiHomeScreenState extends State<TutorialApiHomeScreen> {
   }
 
   List<Tutorial> list = [];
+  bool isLoading = false;
 
   void init() async {
     try {
+      setState(() {
+        isLoading = true;
+      });
       list = await TutorialServices.getApiDB.getAll();
-
       if (!mounted) return;
-      setState(() {});
+      setState(() {
+        isLoading = false;
+      });
     } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        isLoading = false;
+      });
       debugPrint(e.toString());
     }
   }
@@ -35,7 +45,10 @@ class _TutorialApiHomeScreenState extends State<TutorialApiHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Tutorial API')),
+      appBar: AppBar(
+        title: Text('Tutorial API'),
+        actions: [IconButton(onPressed: init, icon: Icon(Icons.refresh_sharp))],
+      ),
       body: _getViews(),
     );
   }
@@ -61,6 +74,7 @@ class _TutorialApiHomeScreenState extends State<TutorialApiHomeScreen> {
             },
           ),
         ),
+        SliverFillRemaining(child: isLoading ? TLoader.random() : null),
       ],
     );
   }

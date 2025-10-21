@@ -5,6 +5,7 @@ import 'package:thancoder_general_static_server/app/ui/app_content/app_content_s
 import 'package:thancoder_general_static_server/more_libs/general_static_server/services/app_services.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/ui/compoments/app_list_item.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/ui/tutorial/tutorial_api_home_screen.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/ui/tutorial/tutorial_local_home_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       body: _getAppList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          goRoute(context, builder: (context) => TutorialApiHomeScreen());
+          goRoute(context, builder: (context) => TutorialLocalHomeScreen());
         },
       ),
     );

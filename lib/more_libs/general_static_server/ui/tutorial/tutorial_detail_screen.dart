@@ -39,7 +39,12 @@ class _TutorialDetailScreenState extends State<TutorialDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.tutorial.title)),
-      body: _getViews(),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 400),
+          child: _getViews(),
+        ),
+      ),
     );
   }
 
@@ -56,6 +61,15 @@ class _TutorialDetailScreenState extends State<TutorialDetailScreen> {
   }
 
   Widget _getListItem(String source) {
-    return TCacheImage(url: source);
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: 200),
+      child: TImage(
+        source: source,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return TLoader();
+        },
+      ),
+    );
   }
 }
