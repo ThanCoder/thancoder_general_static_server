@@ -1,16 +1,25 @@
+import 'package:thancoder_general_static_server/more_libs/general_static_server/services/general_server_path_services.dart';
+
+typedef OnApiResponseCallback = Future<String> Function(String url);
+
 class GeneralServer {
   static final GeneralServer instance = GeneralServer._();
   GeneralServer._();
   factory GeneralServer() => instance;
 
-  late String Function() getServerUrl;
-  late String Function() getServerPath;
+  late String Function() getApiServerUrl;
+  late String Function() getLocalServerPath;
+  late OnApiResponseCallback getContentFromUrl;
 
   Future<void> init({
-    required String Function() getServerUrl,
-    required String Function() getServerPath,
+    required String Function() getApiServerUrl,
+    required String Function() getLocalServerPath,
+    required OnApiResponseCallback getContentFromUrl,
   }) async {
-    this.getServerPath = getServerPath;
-    this.getServerUrl = getServerUrl;
+    this.getLocalServerPath = getLocalServerPath;
+    this.getApiServerUrl = getApiServerUrl;
+    this.getContentFromUrl = getContentFromUrl;
+
+    GeneralServerPathServices.init();
   }
 }

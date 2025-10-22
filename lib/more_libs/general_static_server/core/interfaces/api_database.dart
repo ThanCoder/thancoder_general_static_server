@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:thancoder_general_static_server/more_libs/general_static_server/general_server.dart';
 
-import '../../services/client_services.dart';
 import 'database.dart';
 
 abstract class ApiDatabase<T> extends Database<T> {
@@ -17,9 +17,9 @@ abstract class ApiDatabase<T> extends Database<T> {
     if (_list.isNotEmpty) return _list;
 
     try {
-      final res = await ClientServices.instance.getClient.get(root);
+      final res = await GeneralServer.instance.getContentFromUrl(root);
 
-      List<dynamic> jsonList = jsonDecode(res.data.toString());
+      List<dynamic> jsonList = jsonDecode(res);
       _list.clear();
       final resList = jsonList.map((map) => from(map)).toList();
       _list.addAll(resList);
@@ -39,19 +39,16 @@ abstract class ApiDatabase<T> extends Database<T> {
 
   @override
   Future<T> add(T value) {
-    // TODO: implement add
     throw UnimplementedError();
   }
 
   @override
   Future<bool> update(String id, T value) {
-    // TODO: implement update
     throw UnimplementedError();
   }
 
   @override
   Future<int> delete(String id) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 }

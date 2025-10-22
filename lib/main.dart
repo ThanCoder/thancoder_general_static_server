@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'package:t_client/t_client.dart';
 import 'package:t_widgets/t_widgets.dart';
+import 'package:than_pkg/than_pkg.dart';
 import 'package:thancoder_general_static_server/app/my_app.dart';
 import 'package:thancoder_general_static_server/more_libs/desktop_exe_1.0.1/desktop_exe.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/constants.dart';
 import 'package:thancoder_general_static_server/more_libs/general_static_server/general_server.dart';
-import 'package:thancoder_general_static_server/more_libs/general_static_server/services/general_server_path_services.dart';
 import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/others/index.dart';
 import 'package:thancoder_general_static_server/more_libs/setting_v2.1.0/setting.dart';
 import 'package:thancoder_general_static_server/more_libs/terminal_app/terminal_app.dart';
@@ -39,10 +39,13 @@ void main() async {
   }
 
   await GeneralServer.instance.init(
-    getServerUrl: () => apiServerUrl,
-    getServerPath: () => localServerPath,
+    getApiServerUrl: () => apiServerUrl,
+    getLocalServerPath: () => localServerPath,
+    getContentFromUrl: (url) async {
+      final res = await client.get(url);
+      return res.data.toString();
+    },
   );
-  GeneralServerPathServices.init();
 
   // await ThancoderServer.instance.init(
   //   // showMessage: (context, message) {
@@ -81,5 +84,20 @@ void main() async {
     assetsIconPath: 'assets/thancoder_logo_1.png',
   );
 
+  if (TPlatform.isDesktop) {
+    WindowOptions windowOptions = const WindowOptions(
+      size: Size(602, 568), // စတင်ဖွင့်တဲ့အချိန် window size
+
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      center: false,
+      title: "General Static Server",
+    );
+
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
   runApp(const MyApp());
 }

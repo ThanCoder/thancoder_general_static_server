@@ -54,7 +54,7 @@ class _TutorialLocalHomeScreenState extends State<TutorialLocalHomeScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => TutorialDetailScreen(
-                    rootPath: GeneralServer.instance.getServerPath(),
+                    rootPath: GeneralServer.instance.getLocalServerPath(),
                     tutorial: item,
                   ),
                 ),

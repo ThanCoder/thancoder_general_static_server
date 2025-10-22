@@ -62,7 +62,7 @@ class _TutorialDetailScreenState extends State<TutorialDetailScreen> {
 
   Widget _getListItem(String source) {
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: 200),
+      constraints: BoxConstraints(minHeight: 400),
       child: TImage(
         source: source,
         loadingBuilder: (context, child, loadingProgress) {

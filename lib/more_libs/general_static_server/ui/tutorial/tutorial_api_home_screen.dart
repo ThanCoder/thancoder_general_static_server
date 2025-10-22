@@ -66,7 +66,7 @@ class _TutorialApiHomeScreenState extends State<TutorialApiHomeScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => TutorialDetailScreen(
-                    rootPath: GeneralServer.instance.getServerUrl(),
+                    rootPath: GeneralServer.instance.getApiServerUrl(),
                     tutorial: item,
                   ),
                 ),

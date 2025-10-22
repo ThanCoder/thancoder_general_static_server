@@ -5,7 +5,7 @@ class ReleaseAppServices {
   static ReleaseJsonDatabase getLocalDB(String appId) {
     return ReleaseJsonDatabase(
       root:
-          '${GeneralServer.instance.getServerPath()}/db_files/$appId.app.release.db.json',
+          '${GeneralServer.instance.getApiServerUrl()}/db_files/$appId.app.release.db.json',
     );
   }
 }

@@ -6,10 +6,10 @@ class GeneralServerPathServices {
 
   static void init() {
     _cache['local'] = GeneralServerPathServices(
-      root: GeneralServer.instance.getServerPath(),
+      root: GeneralServer.instance.getLocalServerPath(),
     );
     _cache['api'] = GeneralServerPathServices(
-      root: GeneralServer.instance.getServerUrl(),
+      root: GeneralServer.instance.getApiServerUrl(),
     );
   }
 
